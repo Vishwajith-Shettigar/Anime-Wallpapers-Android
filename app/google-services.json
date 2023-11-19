@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "349687044166",
+    "project_id": "animewallpaper-bf2ca",
+    "storage_bucket": "animewallpaper-bf2ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349687044166:android:298e9111cf86e4019fd247",
+        "android_client_info": {
+          "package_name": "com.example.aotwallpaper"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAumfyIb2Mq0pCBz_P-JeUhmGZC8_pMRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
