@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/src/main/res/drawable/friends.png
+/app/src/main/res/drawable/romace.png
+/app/src/main/res/drawable/chibi.png
+
