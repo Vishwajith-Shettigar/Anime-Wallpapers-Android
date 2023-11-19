@@ -13,12 +13,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aotwallpaper.Adapters.CategoryAdapter
 import com.example.aotwallpaper.AotApplication
 import com.example.aotwallpaper.Data.Category
 import com.example.aotwallpaper.R
 import com.example.aotwallpaper.Viewmodel.CategoryViewmodel
+import com.example.aotwallpaper.Viewmodel.CategoryViewmodelFactory
 import com.example.aotwallpaper.databinding.ActivityHomeBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import javax.inject.Inject
@@ -26,11 +28,13 @@ import javax.inject.Inject
 
 class HomeActivity : AppCompatActivity() {
     @Inject
-    lateinit var firestore: FirebaseFirestore
+    lateinit var categoryViewmodelFactory: CategoryViewmodelFactory
 
     private lateinit var binding: ActivityHomeBinding
 
     private lateinit var categoryViewmodel: CategoryViewmodel
+
+    private var datalist:MutableList<Category> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +44,13 @@ class HomeActivity : AppCompatActivity() {
         (application as AotApplication).appComponent.injectHomeActivity(this)
 
         //viewmdoel
-        categoryViewmodel = ViewModelProvider(this)
-            .get(CategoryViewmodel::class.java)
-        categoryViewmodel.getCategories()
+        categoryViewmodel = ViewModelProvider(
+            this,
+            categoryViewmodelFactory
+        ).get(CategoryViewmodel::class.java)
 
-// drawer
+
+        // drawer
         val toggle = ActionBarDrawerToggle(
             this, binding.drawableLayout,
             R.string.nav_open, R.string.nav_close
@@ -85,18 +91,32 @@ class HomeActivity : AppCompatActivity() {
 
 
         // set up category recuclrview
-        val dataList = listOf<Category>(
-            Category(0, "friends", ""),
-            Category(1, "friends", ""),
-            Category(2, "friends", "")
+
+
+        datalist.add(
+            Category(1,"friends",""),
+        )
+        datalist.add(
+            Category(2,"romace",""),
+        )
+        datalist.add(
+            Category(3,"chibi",""),
         )
 
-        var catadapter = CategoryAdapter(this, dataList)
+        var catadapter = CategoryAdapter(this, datalist)
         binding.categoryRV.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.categoryRV.adapter = catadapter
         binding.categoryRV.isNestedScrollingEnabled = false
 
+
+        lifecycleScope.launchWhenStarted {
+            categoryViewmodel.categories.collect { dataList ->
+                datalist=dataList
+                catadapter.setdata(datalist)
+
+            }
+        }
 
     }
 
