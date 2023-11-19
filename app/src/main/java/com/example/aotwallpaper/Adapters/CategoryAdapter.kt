@@ -48,7 +48,7 @@ class CategoryAdapter(private val context: Context, private val data: List<Categ
         if(data[position].cat_id==2)
           drawableId = R.drawable.chibi
         if(data[position].cat_id==1)
-          drawableId = R.drawable.romance
+          drawableId = R.drawable.romace
 
 
         // Get the drawable from the resource ID
