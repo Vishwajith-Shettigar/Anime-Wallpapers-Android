@@ -6,44 +6,64 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
+import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.aotwallpaper.Data.Category
+import com.example.aotwallpaper.Data.Wallpaper
 import com.example.aotwallpaper.R
+import kotlinx.coroutines.NonDisposableHandle.parent
 
-class CategoryAdapter(private val context: Context, private var data: MutableList<Category>) :
-    RecyclerView.Adapter<CategoryAdapter.Myviewholder>() {
+class CategoryAdapter(
+    private var datalist: MutableList<Wallpaper>,
+    private val context: Context
+) : RecyclerView.Adapter<CategoryAdapter.Myviewholder>() {
 
-    fun setdata(newdata: MutableList<Category>) {
-        data = newdata
+    fun setdata(newdata: MutableList<Wallpaper>) {
+        datalist = newdata
         notifyDataSetChanged()
 
     }
 
-    public class Myviewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.categoryImage)
+    class Myviewholder(itemview: View) : RecyclerView.ViewHolder(itemview) {
+
+        val parent: RelativeLayout = itemview.findViewById(R.id.parent)
+        val image: ImageView = itemview.findViewById(R.id.image)
+        val favoutite: ImageView = itemview.findViewById(R.id.favourite_image)
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Myviewholder {
+        var widthi = calculateItemWidth()
+        var heighti = widthi * 2
+        var itemview =
+            LayoutInflater.from(parent.context).inflate(R.layout.wallpaper_itemview, parent, false)
+        itemview.layoutParams.apply {
+            width = widthi
+            height = heighti
+        }
 
-        val itemview =
-            LayoutInflater.from(parent.context).inflate(R.layout.category_itemv_iew, parent, false)
         return Myviewholder(itemview)
     }
 
     override fun getItemCount(): Int {
-
-        return data.size
+        return datalist.size
     }
 
     override fun onBindViewHolder(holder: Myviewholder, position: Int) {
 
+
         Glide.with(context)
-            .load(data[position].imageUrl)
+            .load(datalist[position].imageUrl)
             .placeholder(R.drawable.cornerradius)
-//             .error(R.drawable.error)
-            .into(holder.imageView)
+            .error(R.drawable.cornerradius)
+            .into(holder.image)
     }
+
+    private fun calculateItemWidth(): Int {
+        val displayMetrics = context.resources.displayMetrics
+        val screenWidth = displayMetrics.widthPixels
+        return (screenWidth / 2) - 20
+    }
+
 }

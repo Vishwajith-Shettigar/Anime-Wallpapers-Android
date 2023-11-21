@@ -15,14 +15,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.aotwallpaper.Adapters.CategoryAdapter
+import com.example.aotwallpaper.Adapters.HomeCategoryAdapter
 import com.example.aotwallpaper.AotApplication
 import com.example.aotwallpaper.Data.Category
 import com.example.aotwallpaper.R
 import com.example.aotwallpaper.Viewmodel.CategoryViewmodel
 import com.example.aotwallpaper.Viewmodel.CategoryViewmodelFactory
 import com.example.aotwallpaper.databinding.ActivityHomeBinding
-import com.google.firebase.firestore.FirebaseFirestore
 import javax.inject.Inject
 
 
@@ -103,7 +102,7 @@ class HomeActivity : AppCompatActivity() {
             Category(3,"chibi",""),
         )
 
-        var catadapter = CategoryAdapter(this, datalist)
+        var catadapter = HomeCategoryAdapter(this, datalist)
         binding.categoryRV.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.categoryRV.adapter = catadapter

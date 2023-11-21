@@ -16,6 +16,9 @@
         android:theme="@style/Theme.AotWallpaper"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.CategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.HomeActivity"
             android:exported="false" />
         <activity
