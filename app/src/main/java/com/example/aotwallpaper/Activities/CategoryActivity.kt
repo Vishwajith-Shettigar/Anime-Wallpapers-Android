@@ -2,20 +2,16 @@ package com.example.aotwallpaper.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.GridLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aotwallpaper.Adapters.CategoryAdapter
 import com.example.aotwallpaper.AotApplication
 import com.example.aotwallpaper.Data.Wallpaper
 import com.example.aotwallpaper.R
 import com.example.aotwallpaper.Viewmodel.CategoryViewmodel
 import com.example.aotwallpaper.Viewmodel.CategoryViewmodelFactory
-import com.example.aotwallpaper.Viewmodel.WallpaperViewmodel
-import com.example.aotwallpaper.Viewmodel.WallpaperViewmodelFactory
 import com.example.aotwallpaper.databinding.ActivityCategoryBinding
 import javax.inject.Inject
 
@@ -24,9 +20,9 @@ class CategoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCategoryBinding
     private var datalist: MutableList<Wallpaper> = mutableListOf()
     private var cat_id: Int = 0
-    private lateinit var wallpaperViewmodel: WallpaperViewmodel
+    private lateinit var wallpaperViewmodel: CategoryViewmodel
     @Inject
-    lateinit var wallpaperViewmodelFactory: WallpaperViewmodelFactory
+    lateinit var wallpaperViewmodelFactory: CategoryViewmodelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +46,7 @@ class CategoryActivity : AppCompatActivity() {
         wallpaperViewmodel = ViewModelProvider(
             this,
             wallpaperViewmodelFactory
-        ).get(WallpaperViewmodel::class.java)
+        ).get(CategoryViewmodel::class.java)
 
 
 

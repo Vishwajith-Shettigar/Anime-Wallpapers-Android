@@ -1,59 +1,55 @@
 package com.example.aotwallpaper.Viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.aotwallpaper.Data.Category
-import com.example.aotwallpaper.Data.Wallpaper
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class WallpaperViewmodel(
-    private val firestore: FirebaseFirestore,
-    private val cat_name:String
-):ViewModel() {
+class HomeViewmodel(
+    private val firestore: FirebaseFirestore
+) : ViewModel() {
 
-    private val _wallpapers = MutableStateFlow<MutableList<Wallpaper>>(mutableListOf())
-    val wallpapers: StateFlow<MutableList<Wallpaper>> get() = _wallpapers
+    private val _categories = MutableStateFlow<MutableList<Category>>(mutableListOf())
+    val categories: StateFlow<MutableList<Category>> get() = _categories
 
-    init{
-        getWallpapers()
+    init {
+        getCategories()
     }
-    fun getWallpapers(){
 
+    fun getCategories() {
         viewModelScope.launch {
             try {
 
-                var datalist: MutableList<Wallpaper> = mutableListOf()
+                var datalist: MutableList<Category> = mutableListOf()
 
-                firestore.collection("AOT").document("images")
-                    .collection(cat_name).get()
+                firestore.collection("AOT").document("Category")
+                    .collection("category").get()
                     .addOnCompleteListener {
 
                         if (it.isSuccessful) {
 
                             for (document in it.result.documents) {
 
-                                val data = Wallpaper(
-
+                                val data = Category(
+                                    (document.get("id") as Long).toInt(),
+                                    document.get("name") as String,
                                     document.get("imageurl") as String
                                 )
 
                                 datalist.add(data)
                             }
-
-                            _wallpapers.value = datalist
+                            _categories.value = datalist
 
                         } else {
-
                         }
                     }
             } catch (e: Exception) {
             }
         }
-
     }
 }
+
+

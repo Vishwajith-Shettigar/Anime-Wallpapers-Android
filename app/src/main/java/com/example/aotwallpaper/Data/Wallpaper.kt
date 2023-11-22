@@ -1,7 +1,6 @@
 package com.example.aotwallpaper.Data
 
-data class Wallpaper (
-
-    val imageUrl:String
-
-        )
+data class Wallpaper(
+    val id: String,
+    val imageUrl: String
+)

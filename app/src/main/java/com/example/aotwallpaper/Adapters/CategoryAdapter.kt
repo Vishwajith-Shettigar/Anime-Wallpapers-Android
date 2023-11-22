@@ -1,6 +1,7 @@
 package com.example.aotwallpaper.Adapters
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.aotwallpaper.Activities.WallpaperActivity
 import com.example.aotwallpaper.Data.Category
 import com.example.aotwallpaper.Data.Wallpaper
 import com.example.aotwallpaper.R
@@ -58,6 +60,13 @@ class CategoryAdapter(
             .placeholder(R.drawable.cornerradius)
             .error(R.drawable.cornerradius)
             .into(holder.image)
+
+        holder.parent.setOnClickListener {
+            val intent=Intent(context,WallpaperActivity::class.java)
+            intent.putExtra("imageUrl",datalist[position].imageUrl)
+            intent.putExtra("isFavourite",false)
+            context.startActivity(intent)
+        }
     }
 
     private fun calculateItemWidth(): Int {

@@ -19,19 +19,19 @@ import com.example.aotwallpaper.Adapters.HomeCategoryAdapter
 import com.example.aotwallpaper.AotApplication
 import com.example.aotwallpaper.Data.Category
 import com.example.aotwallpaper.R
-import com.example.aotwallpaper.Viewmodel.CategoryViewmodel
-import com.example.aotwallpaper.Viewmodel.CategoryViewmodelFactory
+import com.example.aotwallpaper.Viewmodel.HomeViewmodel
+import com.example.aotwallpaper.Viewmodel.HomeViewmodelFactory
 import com.example.aotwallpaper.databinding.ActivityHomeBinding
 import javax.inject.Inject
 
 
 class HomeActivity : AppCompatActivity() {
     @Inject
-    lateinit var categoryViewmodelFactory: CategoryViewmodelFactory
+    lateinit var categoryViewmodelFactory: HomeViewmodelFactory
 
     private lateinit var binding: ActivityHomeBinding
 
-    private lateinit var categoryViewmodel: CategoryViewmodel
+    private lateinit var categoryViewmodel: HomeViewmodel
 
     private var datalist:MutableList<Category> = mutableListOf()
 
@@ -46,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
         categoryViewmodel = ViewModelProvider(
             this,
             categoryViewmodelFactory
-        ).get(CategoryViewmodel::class.java)
+        ).get(HomeViewmodel::class.java)
 
 
         // drawer
