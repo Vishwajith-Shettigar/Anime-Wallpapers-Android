@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aotwallpaper.Adapters.HomeCategoryAdapter
 import com.example.aotwallpaper.AotApplication
+import com.example.aotwallpaper.DAO.FavouriteDao
 import com.example.aotwallpaper.Data.Category
 import com.example.aotwallpaper.R
 import com.example.aotwallpaper.Viewmodel.HomeViewmodel
@@ -34,7 +35,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var categoryViewmodel: HomeViewmodel
 
     private var datalist:MutableList<Category> = mutableListOf()
-
+    @Inject
+    lateinit var favouriteDao: FavouriteDao
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
@@ -42,6 +44,7 @@ class HomeActivity : AppCompatActivity() {
         // injection
         (application as AotApplication).appComponent.injectHomeActivity(this)
 
+        Log.e("#",favouriteDao.toString())
         //viewmdoel
         categoryViewmodel = ViewModelProvider(
             this,
