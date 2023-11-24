@@ -1,5 +1,6 @@
 package com.example.aotwallpaper.Adapters
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -19,13 +20,15 @@ import com.example.aotwallpaper.Entity.FavouriteEntity
 import com.example.aotwallpaper.R
 import com.example.aotwallpaper.Repository.FavouriteRepository
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.NonDisposableHandle.parent
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CategoryAdapter(
     private var datalist: MutableList<Wallpaper>,
-    private val context: Context
+    private val context: Context,
+    private val recyclerView: RecyclerView
 ) : RecyclerView.Adapter<CategoryAdapter.Myviewholder>() {
 
     private var favouriteList = mutableListOf<FavouriteEntity>()
@@ -33,7 +36,7 @@ class CategoryAdapter(
     @Inject
     lateinit var favouriteRepository: FavouriteRepository
 
-
+    private var currentPosition: Int = RecyclerView.NO_POSITION
     fun setdata(newdata: MutableList<Wallpaper>) {
         GlobalScope.launch {
 
@@ -42,6 +45,21 @@ class CategoryAdapter(
         datalist = newdata
         notifyDataSetChanged()
 
+    }
+
+    fun updateAdapter() {
+        Log.e("#","update adapter")
+        // Update your adapter's data or perform any necessary actions
+        // In your case, you might want to refresh the favouriteList based on the modified data
+        MainScope().launch {
+            favouriteList = favouriteRepository.getAllFavourites()
+            notifyDataSetChanged()
+
+            // Scroll to the saved position
+//            if (currentPosition != RecyclerView.NO_POSITION) {
+//                recyclerView.scrollToPosition(currentPosition)
+//            }
+        }
     }
 
     class Myviewholder(itemview: View) : RecyclerView.ViewHolder(itemview) {
@@ -90,12 +108,17 @@ class CategoryAdapter(
         holder.image.setOnClickListener {
             val intent = Intent(context, WallpaperActivity::class.java)
             intent.putExtra("imageUrl", datalist[position].imageUrl)
-            intent.putExtra("isFavourite", false)
-            context.startActivity(intent)
+            intent.putExtra("isFavourite", isFavourite)
+            intent.putExtra("id",  datalist[position].id)
+            (context as Activity).startActivityForResult(intent,1001)
         }
 
 
         holder.favoutite.setOnClickListener {
+            isFavourite = favouriteList.any {
+                it.id == datalist[position].id
+
+            }
 
 
             if (!isFavourite) {
@@ -149,4 +172,5 @@ class CategoryAdapter(
             .into(holder.favoutite)
 
     }
+
 }

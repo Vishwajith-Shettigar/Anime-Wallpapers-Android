@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.example.aotwallpaper.Activities.CategoryActivity
 import com.example.aotwallpaper.Activities.HomeActivity
+import com.example.aotwallpaper.Activities.WallpaperActivity
 import com.example.aotwallpaper.Adapters.CategoryAdapter
 import dagger.BindsInstance
 import dagger.Component
@@ -17,6 +18,8 @@ interface AppComponent {
     fun injectCategoryActivity(categoryActivity: CategoryActivity)
 
     fun injectCategoryAdapter(categoryAdapter: CategoryAdapter)
+
+    fun injectWallpaperActivity(wallpaperActivity: WallpaperActivity)
 
     @Component.Builder
     interface Builder {

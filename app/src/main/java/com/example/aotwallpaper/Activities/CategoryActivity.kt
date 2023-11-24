@@ -1,7 +1,10 @@
 package com.example.aotwallpaper.Activities
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -13,6 +16,8 @@ import com.example.aotwallpaper.R
 import com.example.aotwallpaper.Viewmodel.CategoryViewmodel
 import com.example.aotwallpaper.Viewmodel.CategoryViewmodelFactory
 import com.example.aotwallpaper.databinding.ActivityCategoryBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CategoryActivity : AppCompatActivity() {
@@ -24,9 +29,12 @@ class CategoryActivity : AppCompatActivity() {
     @Inject
     lateinit var wallpaperViewmodelFactory: CategoryViewmodelFactory
 
+    lateinit var categoryadapter:CategoryAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val categoryadapter = CategoryAdapter(datalist, this)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_category)
+        categoryadapter = CategoryAdapter(datalist, this,binding.wallpaperRV)
         // injection
         (application as AotApplication).appComponent.injectCategoryActivity(this)
         (application as AotApplication).appComponent.injectCategoryAdapter(categoryadapter)
@@ -35,7 +43,7 @@ class CategoryActivity : AppCompatActivity() {
         val catname = intent.getStringExtra("cat_name")
         cat_id = intent.getIntExtra("cat_id", 0)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_category)
+
 
         val capitalizedText = catname?.substring(0, 1)?.uppercase() + catname?.substring(1)
 
@@ -70,4 +78,24 @@ class CategoryActivity : AppCompatActivity() {
         }
 
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        Log.e("#","lllllllllll")
+
+                updateAdapter()
+
+
+    }
+
+    private fun updateAdapter() {
+Log.e("#","-------------")
+        // Update your adapter's data or perform any necessary actions
+        // In your case, you might want to refresh the favouriteList based on the modified data
+categoryadapter.updateAdapter()
+    }
+
+
+
+
 }
