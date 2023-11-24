@@ -19,10 +19,13 @@ import com.example.aotwallpaper.Adapters.HomeCategoryAdapter
 import com.example.aotwallpaper.AotApplication
 import com.example.aotwallpaper.DAO.FavouriteDao
 import com.example.aotwallpaper.Data.Category
+import com.example.aotwallpaper.Entity.FavouriteEntity
 import com.example.aotwallpaper.R
 import com.example.aotwallpaper.Viewmodel.HomeViewmodel
 import com.example.aotwallpaper.Viewmodel.HomeViewmodelFactory
 import com.example.aotwallpaper.databinding.ActivityHomeBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -35,8 +38,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var categoryViewmodel: HomeViewmodel
 
     private var datalist:MutableList<Category> = mutableListOf()
-    @Inject
-    lateinit var favouriteDao: FavouriteDao
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
@@ -44,7 +47,7 @@ class HomeActivity : AppCompatActivity() {
         // injection
         (application as AotApplication).appComponent.injectHomeActivity(this)
 
-        Log.e("#",favouriteDao.toString())
+
         //viewmdoel
         categoryViewmodel = ViewModelProvider(
             this,
@@ -119,6 +122,7 @@ class HomeActivity : AppCompatActivity() {
 
             }
         }
+
 
     }
 

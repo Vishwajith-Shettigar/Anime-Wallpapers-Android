@@ -10,7 +10,12 @@ class FavouriteRepository @Inject constructor(private val favouriteDao: Favourit
         favouriteDao.insert(favouriteEntity)
     }
 
-    suspend fun getAllNotes(): List<FavouriteEntity> {
+    suspend fun getAllFavourites(): MutableList<FavouriteEntity> {
         return favouriteDao.getAllFavourites()
+    }
+
+    suspend fun deleteFavourite(id: String){
+        return favouriteDao.deleteById(id)
+
     }
 }

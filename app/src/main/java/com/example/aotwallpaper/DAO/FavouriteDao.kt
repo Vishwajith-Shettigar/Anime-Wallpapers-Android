@@ -11,5 +11,11 @@ interface FavouriteDao {
     suspend fun insert(note: FavouriteEntity)
 
     @Query("SELECT * FROM favouritetb")
-    suspend fun getAllFavourites(): List<FavouriteEntity>
+    suspend fun getAllFavourites(): MutableList<FavouriteEntity>
+
+    @Query("DELETE FROM favouritetb")
+   suspend fun deleteAllData()
+
+    @Query("DELETE FROM favouritetb WHERE id = :id")
+    suspend fun deleteById(id: String)
 }

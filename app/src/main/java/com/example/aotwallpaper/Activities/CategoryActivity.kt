@@ -26,9 +26,10 @@ class CategoryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val categoryadapter = CategoryAdapter(datalist, this)
         // injection
         (application as AotApplication).appComponent.injectCategoryActivity(this)
+        (application as AotApplication).appComponent.injectCategoryAdapter(categoryadapter)
 
         //intent get extras
         val catname = intent.getStringExtra("cat_name")
@@ -53,7 +54,7 @@ class CategoryActivity : AppCompatActivity() {
 
         binding.wallpaperRV.layoutManager = GridLayoutManager(this, 2)
 
-        val categoryadapter = CategoryAdapter(datalist, this)
+
 
         binding.wallpaperRV.apply {
             adapter = categoryadapter
