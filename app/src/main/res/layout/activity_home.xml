@@ -50,6 +50,7 @@
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="@color/sidenav"
 
             >
 
@@ -62,7 +63,7 @@
                     android:layout_width="200dp"
                     android:layout_height="300dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/logoaot" />
+                    app:srcCompat="@drawable/logoaot" />
 
                 <LinearLayout
                     android:id="@+id/favourite_layout"
@@ -78,7 +79,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_margin="10dp"
-                        android:src="@drawable/baseline_favorite_border_24" />
+                        android:src="@drawable/border_favourite" />
 
                     <TextView
                         android:layout_width="wrap_content"

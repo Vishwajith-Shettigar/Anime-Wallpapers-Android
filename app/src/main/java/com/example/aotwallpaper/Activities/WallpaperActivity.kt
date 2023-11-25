@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.example.aotwallpaper.Adapters.CategoryAdapter
 import com.example.aotwallpaper.AotApplication
 import com.example.aotwallpaper.Entity.FavouriteEntity
 import com.example.aotwallpaper.R
@@ -132,7 +131,7 @@ class WallpaperActivity : AppCompatActivity() {
 
     private fun removeFavourite() {
         Glide.with(this)
-            .load(R.drawable.baseline_favorite_border_24)
+            .load(R.drawable.border_favourite)
             .placeholder(R.drawable.cornerradius)
             .error(R.drawable.cornerradius)
             .into(binding.favbtn)

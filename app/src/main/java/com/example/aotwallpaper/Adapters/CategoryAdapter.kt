@@ -3,25 +3,19 @@ package com.example.aotwallpaper.Adapters
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.aotwallpaper.Activities.WallpaperActivity
-import com.example.aotwallpaper.AotApplication
-import com.example.aotwallpaper.Data.Category
 import com.example.aotwallpaper.Data.Wallpaper
 import com.example.aotwallpaper.Entity.FavouriteEntity
 import com.example.aotwallpaper.R
 import com.example.aotwallpaper.Repository.FavouriteRepository
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.NonDisposableHandle.parent
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -64,6 +58,7 @@ class CategoryAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Myviewholder {
+
         var widthi = calculateItemWidth()
         var heighti = widthi * 2
         var itemview =
@@ -160,7 +155,7 @@ class CategoryAdapter(
 
     private fun removeFavourite(holder: Myviewholder) {
         Glide.with(context)
-            .load(R.drawable.baseline_favorite_border_24)
+            .load(R.drawable.border_favourite)
             .placeholder(R.drawable.cornerradius)
             .error(R.drawable.cornerradius)
             .into(holder.favoutite)
