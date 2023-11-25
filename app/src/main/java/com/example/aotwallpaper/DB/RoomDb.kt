@@ -11,8 +11,6 @@ import com.example.aotwallpaper.Entity.FavouriteEntity
 @Database(entities = [FavouriteEntity::class],  exportSchema = false,version = 1)
 abstract class RoomDb : RoomDatabase() {
 
-
-
     abstract fun favouriteDao(): FavouriteDao
 
 
