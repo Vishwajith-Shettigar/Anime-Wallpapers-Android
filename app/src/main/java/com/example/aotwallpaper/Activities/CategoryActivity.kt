@@ -81,19 +81,12 @@ class CategoryActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        Log.e("#","lllllllllll")
-
-                updateAdapter()
-
-
+        lifecycleScope.launch {
+            categoryadapter.notifyFavouriteChanges()
+        }
     }
 
-    private fun updateAdapter() {
-Log.e("#","-------------")
-        // Update your adapter's data or perform any necessary actions
-        // In your case, you might want to refresh the favouriteList based on the modified data
-categoryadapter.updateAdapter()
-    }
+
 
 
 

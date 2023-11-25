@@ -18,4 +18,8 @@ class FavouriteRepository @Inject constructor(private val favouriteDao: Favourit
         return favouriteDao.deleteById(id)
 
     }
+
+    suspend fun deleteAll(){
+        favouriteDao.deleteAllData()
+    }
 }

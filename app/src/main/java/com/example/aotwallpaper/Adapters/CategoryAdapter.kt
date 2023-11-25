@@ -37,29 +37,22 @@ class CategoryAdapter(
     lateinit var favouriteRepository: FavouriteRepository
 
     private var currentPosition: Int = RecyclerView.NO_POSITION
-    fun setdata(newdata: MutableList<Wallpaper>) {
-        GlobalScope.launch {
+    private suspend fun loadFavourites() {
+        favouriteList = favouriteRepository.getAllFavourites()
+    }
 
-            favouriteList = favouriteRepository.getAllFavourites()
-        }
+    suspend fun setdata(newdata: MutableList<Wallpaper>) {
+
+        loadFavourites()
+        newdata.shuffle()
         datalist = newdata
         notifyDataSetChanged()
 
     }
 
-    fun updateAdapter() {
-        Log.e("#","update adapter")
-        // Update your adapter's data or perform any necessary actions
-        // In your case, you might want to refresh the favouriteList based on the modified data
-        MainScope().launch {
-            favouriteList = favouriteRepository.getAllFavourites()
-            notifyDataSetChanged()
-
-            // Scroll to the saved position
-//            if (currentPosition != RecyclerView.NO_POSITION) {
-//                recyclerView.scrollToPosition(currentPosition)
-//            }
-        }
+    suspend fun notifyFavouriteChanges(){
+        loadFavourites()
+        notifyDataSetChanged()
     }
 
     class Myviewholder(itemview: View) : RecyclerView.ViewHolder(itemview) {
@@ -89,6 +82,7 @@ class CategoryAdapter(
 
     override fun onBindViewHolder(holder: Myviewholder, position: Int) {
 
+        removeFavourite(holder)
 
         var isFavourite = favouriteList.any {
             it.id == datalist[position].id
@@ -109,8 +103,8 @@ class CategoryAdapter(
             val intent = Intent(context, WallpaperActivity::class.java)
             intent.putExtra("imageUrl", datalist[position].imageUrl)
             intent.putExtra("isFavourite", isFavourite)
-            intent.putExtra("id",  datalist[position].id)
-            (context as Activity).startActivityForResult(intent,1001)
+            intent.putExtra("id", datalist[position].id)
+            (context as Activity).startActivityForResult(intent, 1001)
         }
 
 
