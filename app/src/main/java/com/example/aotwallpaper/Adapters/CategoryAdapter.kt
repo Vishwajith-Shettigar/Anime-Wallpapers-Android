@@ -11,7 +11,7 @@ import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.aotwallpaper.Activities.WallpaperActivity
-import com.example.aotwallpaper.Data.Wallpaper
+import com.example.aotwallpaper.Entity.Wallpaper
 import com.example.aotwallpaper.Entity.FavouriteEntity
 import com.example.aotwallpaper.R
 import com.example.aotwallpaper.Repository.FavouriteRepository

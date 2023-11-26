@@ -98,16 +98,6 @@ class HomeActivity : AppCompatActivity() {
         // set up category recuclrview
 
 
-        datalist.add(
-            Category(1,"friends",""),
-        )
-        datalist.add(
-            Category(2,"romace",""),
-        )
-        datalist.add(
-            Category(3,"chibi",""),
-        )
-
         var catadapter = HomeCategoryAdapter(this, datalist)
         binding.categoryRV.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

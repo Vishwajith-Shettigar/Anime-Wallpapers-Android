@@ -1,22 +1,19 @@
 package com.example.aotwallpaper.Activities
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.aotwallpaper.Adapters.CategoryAdapter
 import com.example.aotwallpaper.AotApplication
-import com.example.aotwallpaper.Data.Wallpaper
+import com.example.aotwallpaper.Entity.Wallpaper
 import com.example.aotwallpaper.R
 import com.example.aotwallpaper.Viewmodel.CategoryViewmodel
 import com.example.aotwallpaper.Viewmodel.CategoryViewmodelFactory
 import com.example.aotwallpaper.databinding.ActivityCategoryBinding
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -50,7 +47,7 @@ class CategoryActivity : AppCompatActivity() {
         binding.categoryLabel.text = capitalizedText
 
         if (catname != null) {
-            wallpaperViewmodelFactory.setCatName(catname)
+            wallpaperViewmodelFactory.setCatName(catname,cat_id)
         }
         wallpaperViewmodel = ViewModelProvider(
             this,

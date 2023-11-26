@@ -2,12 +2,13 @@ package com.example.aotwallpaper.DAO
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.aotwallpaper.Entity.FavouriteEntity
 
 @Dao
 interface FavouriteDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(note: FavouriteEntity)
 
     @Query("SELECT * FROM favouritetb")
