@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.aotwallpaper.Entity.Wallpaper
 import com.example.aotwallpaper.Repository.WallpaperRepository
+import com.example.aotwallpaper.Util.SharedPreferencesManager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,11 +14,12 @@ import kotlinx.coroutines.launch
 class CategoryViewmodel(
     private val firestore: FirebaseFirestore,
     private val wallpaperRepository: WallpaperRepository,
+    private val sharedPreferencesManager: SharedPreferencesManager,
     private val cat_name: String,
     private val cat_id: Int
 ) : ViewModel() {
 
-
+    private val oneWeekInMillis = 7 * 24 * 60 * 60 * 1000L
     private val _wallpapers = MutableStateFlow<MutableList<Wallpaper>>(mutableListOf())
     val wallpapers: StateFlow<MutableList<Wallpaper>> get() = _wallpapers
 
@@ -27,14 +29,26 @@ class CategoryViewmodel(
     init {
 
         viewModelScope.launch {
+            val lastcurtime = sharedPreferencesManager.getLastCurTime()
+            val currentTime = System.currentTimeMillis()
 
+
+            if (lastcurtime == 0L) {
+
+                sharedPreferencesManager.saveCurTime(currentTime)
+            }
+            if ((currentTime - lastcurtime) >= oneWeekInMillis) {
+                wallpaperRepository.deleteAll()
+
+                sharedPreferencesManager.saveCurTime(currentTime)
+            }
             var datalist = wallpaperRepository.getAllWallpapers(cat_id)
-
             if (datalist.isEmpty()) {
+
                 getWallpapers()
 
             } else {
-                Log.e("#","room call "+cat_id)
+                Log.e("#", "room call " + cat_id)
                 _wallpapers.value = datalist
             }
 
@@ -48,6 +62,7 @@ class CategoryViewmodel(
         }
 
     }
+
 
     fun getWallpapers() {
 
