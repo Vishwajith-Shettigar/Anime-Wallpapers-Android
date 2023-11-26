@@ -32,7 +32,6 @@ class CategoryViewmodel(
             val lastcurtime = sharedPreferencesManager.getLastCurTime()
             val currentTime = System.currentTimeMillis()
 
-
             if (lastcurtime == 0L) {
 
                 sharedPreferencesManager.saveCurTime(currentTime)
@@ -66,14 +65,10 @@ class CategoryViewmodel(
 
     fun getWallpapers() {
 
-
         val datalist: MutableList<Wallpaper> = mutableListOf()
         viewModelScope.launch {
             try {
-
-
-                firestore.collection("AOT").document("images")
-                    .collection(cat_name).get()
+                firestore.collection("AOT").document("images").collection(cat_name).get()
                     .addOnCompleteListener {
 
                         if (it.isSuccessful) {
@@ -81,27 +76,17 @@ class CategoryViewmodel(
                             for (document in it.result.documents) {
 
                                 val data = Wallpaper(
-                                    document.id,
-                                    cat_id,
-                                    document.get("imageurl") as String
+                                    document.id, cat_id, document.get("imageurl") as String
                                 )
-
                                 datalist.add(data)
                             }
-
                             _wallpapers.value = datalist
                             _roomwallpapers.value = datalist
-
-
                         } else {
-
                         }
                     }
-
             } catch (e: Exception) {
             }
         }
-
-
     }
 }

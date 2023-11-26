@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AotWallpaper"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Activities.FavouriteActivity"
+            android:exported="false" />
         <activity
             android:name=".Activities.WallpaperActivity"
             android:exported="false" />

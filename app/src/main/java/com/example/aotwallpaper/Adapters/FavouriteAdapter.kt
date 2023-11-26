@@ -3,6 +3,7 @@ package com.example.aotwallpaper.Adapters
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,35 +20,32 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CategoryAdapter(
-    private var datalist: MutableList<Wallpaper>,
+class FavouriteAdapter(
+    private var datalist: MutableList<FavouriteEntity>,
     private val context: Context,
-    private val recyclerView: RecyclerView
-) : RecyclerView.Adapter<CategoryAdapter.Myviewholder>() {
-
-    private var favouriteList = mutableListOf<FavouriteEntity>()
+) : RecyclerView.Adapter<FavouriteAdapter.Myviewholder>() {
 
     @Inject
     lateinit var favouriteRepository: FavouriteRepository
 
-
     private suspend fun loadFavourites() {
-        favouriteList = favouriteRepository.getAllFavourites()
+        datalist = favouriteRepository.getAllFavourites()
     }
 
-    suspend fun setdata(newdata: MutableList<Wallpaper>) {
+    fun setdata(newdata: MutableList<FavouriteEntity>) {
 
-        loadFavourites()
-        newdata.shuffle()
+
         datalist = newdata
+        Log.e("#", "adapter " + datalist.size)
         notifyDataSetChanged()
 
     }
 
-    suspend fun notifyFavouriteChanges(){
+    suspend fun notifyFavouriteChanges() {
         loadFavourites()
         notifyDataSetChanged()
     }
+
 
     class Myviewholder(itemview: View) : RecyclerView.ViewHolder(itemview) {
 
@@ -77,64 +75,23 @@ class CategoryAdapter(
 
     override fun onBindViewHolder(holder: Myviewholder, position: Int) {
 
-        removeFavourite(holder)
 
-        var isFavourite = favouriteList.any {
-            it.id == datalist[position].id
-
-        }
-
-        if (isFavourite) {
-            addFavourite(holder)
-        }
+        holder.favoutite.visibility = View.GONE
 
         Glide.with(context)
-            .load(datalist[position].imageUrl)
+            .load(datalist[position].imageurl)
             .placeholder(R.drawable.cornerradius)
             .error(R.drawable.cornerradius)
             .into(holder.image)
 
         holder.image.setOnClickListener {
             val intent = Intent(context, WallpaperActivity::class.java)
-            intent.putExtra("imageUrl", datalist[position].imageUrl)
-            intent.putExtra("isFavourite", isFavourite)
+            intent.putExtra("imageUrl", datalist[position].imageurl)
+            intent.putExtra("isFavourite", true)
             intent.putExtra("id", datalist[position].id)
             (context as Activity).startActivityForResult(intent, 1001)
         }
 
-
-        holder.favoutite.setOnClickListener {
-            isFavourite = favouriteList.any {
-                it.id == datalist[position].id
-
-            }
-
-
-            if (!isFavourite) {
-                isFavourite = true
-                val favouriteEntity =
-                    FavouriteEntity(datalist[position].id, datalist[position].imageUrl)
-                GlobalScope.launch {
-                    favouriteRepository.insert(favouriteEntity)
-                }
-                favouriteList.add(favouriteEntity)
-
-                addFavourite(holder)
-
-            } else {
-                isFavourite = false
-                GlobalScope.launch {
-                    favouriteRepository.deleteFavourite(datalist[position].id)
-                }
-
-                favouriteList.removeIf {
-                    it.id == datalist[position].id
-
-                }
-
-                removeFavourite(holder)
-            }
-        }
 
     }
 

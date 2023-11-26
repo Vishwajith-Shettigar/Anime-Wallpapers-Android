@@ -1,6 +1,7 @@
 package com.example.aotwallpaper.Activities
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -71,6 +72,7 @@ class HomeActivity : AppCompatActivity() {
             performHapticFeedback()
             repelAnimation(it)
             Log.e("#", "facouite clicked")
+            startActivity(Intent(this,FavouriteActivity::class.java))
         }
 
 
