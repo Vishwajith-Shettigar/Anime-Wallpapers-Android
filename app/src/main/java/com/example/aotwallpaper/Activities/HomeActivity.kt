@@ -9,6 +9,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -48,6 +49,8 @@ class HomeActivity : AppCompatActivity() {
         // injection
         (application as AotApplication).appComponent.injectHomeActivity(this)
 
+        binding.categoryRV.visibility=View.GONE
+        binding.skeletonparent.visibility=View.VISIBLE
 
         //viewmdoel
         categoryViewmodel = ViewModelProvider(
@@ -96,9 +99,7 @@ class HomeActivity : AppCompatActivity() {
             Log.e("#", "about us clicked")
         }
 
-
         // set up category recuclrview
-
 
         var catadapter = HomeCategoryAdapter(this, datalist)
         binding.categoryRV.layoutManager =
@@ -111,11 +112,12 @@ class HomeActivity : AppCompatActivity() {
             categoryViewmodel.categories.collect { dataList ->
                 datalist=dataList
                 catadapter.setdata(datalist)
-
+                if(dataList.size!=0) {
+                    binding.categoryRV.visibility = View.VISIBLE
+                    binding.skeletonparent.visibility = View.GONE
+                }
             }
         }
-
-
     }
 
     private fun performHapticFeedback() {

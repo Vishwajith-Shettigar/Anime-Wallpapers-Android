@@ -2,10 +2,7 @@ package com.example.aotwallpaper.DI
 
 import android.app.Application
 import android.content.Context
-import com.example.aotwallpaper.Activities.CategoryActivity
-import com.example.aotwallpaper.Activities.FavouriteActivity
-import com.example.aotwallpaper.Activities.HomeActivity
-import com.example.aotwallpaper.Activities.WallpaperActivity
+import com.example.aotwallpaper.Activities.*
 import com.example.aotwallpaper.Adapters.CategoryAdapter
 import com.example.aotwallpaper.Adapters.FavouriteAdapter
 import dagger.BindsInstance
@@ -26,6 +23,8 @@ interface AppComponent {
     fun injectFavouriteActivity(favouriteActivity: FavouriteActivity)
 
     fun injectFavouriteAdapter(favouriteAdapter: FavouriteAdapter)
+
+    fun injectSplashScreenActivity(splashscreenActivity: SplashscreenActivity)
 
     @Component.Builder
     interface Builder {

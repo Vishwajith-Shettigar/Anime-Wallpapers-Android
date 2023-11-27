@@ -12,7 +12,17 @@
         android:layout_height="match_parent"
         android:layout_margin="0dp"
         android:padding="0dp"
+        android:background="@color/sidenav"
         tools:context=".Activities.SplashscreenActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/slider_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:padding="0dp"
+            android:visibility="gone"
+            >
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/splashscreenviewpager"
@@ -35,8 +45,6 @@
                 android:layout_height="10dp"
                 android:background="@drawable/dotsfragactive"
                 android:layout_marginEnd="14dp"
-
-
                 />
             <TextView
                 android:id="@+id/dottwo"
@@ -57,6 +65,51 @@
                 />
 
         </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/singlescreen_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        >
+
+        <ImageView
+            android:id="@+id/splashlogo"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/logoaot"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="100dp"
+            android:elevation="10dp"
+            />
+
+        <TextView
+            android:id="@+id/aottext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attack On Titan"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/splashlogo"
+            app:layout_constraintEnd_toEndOf="parent"
+android:fontFamily="sans-serif-smallcaps"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lyka"
+            android:textSize="30dp"
+android:layout_marginBottom="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+       />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -18,5 +18,15 @@ class SharedPreferencesManager(context: Context) {
         return sharedPreferences.getLong("curtime", 0)
     }
 
+    fun offSSlider(){
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("offslider",true)
+        editor.apply()
+    }
+
+    fun getIsSliderOff():Boolean{
+        return sharedPreferences.getBoolean("offslider",false)
+    }
+
 
 }

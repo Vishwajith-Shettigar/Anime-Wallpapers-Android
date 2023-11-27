@@ -45,9 +45,7 @@ class FavouriteActivity : AppCompatActivity() {
 
         ).get(FavouriteViewmodel::class.java)
 
-
         binding.favouritesRV.layoutManager = GridLayoutManager(this, 2)
-
 
         binding.favouritesRV.apply {
             adapter = favouriteAdapter

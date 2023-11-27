@@ -36,12 +36,91 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>
 
+<LinearLayout
+    android:id="@+id/skeletonparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="201dp"
+        app:cardCornerRadius="20dp"
+        android:elevation="10dp"
+        android:padding="0dp"
+        android:layout_margin="10dp"
+        >
+<com.facebook.shimmer.ShimmerFrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+ >
 
+
+        <ImageView
+            android:id="@+id/skeleton2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cornerradius"
+            />
+</com.facebook.shimmer.ShimmerFrameLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="201dp"
+        app:cardCornerRadius="20dp"
+        android:elevation="10dp"
+        android:padding="0dp"
+        android:layout_margin="10dp"
+        >
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            >
+
+
+        <ImageView
+            android:id="@+id/skeleton1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cornerradius"
+            />
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="201dp"
+        app:cardCornerRadius="20dp"
+        android:elevation="10dp"
+        android:padding="0dp"
+        android:layout_margin="10dp"
+        >
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            >
+
+        <ImageView
+            android:id="@+id/skeleton3"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cornerradius"
+            />
+        </com.facebook.shimmer.ShimmerFrameLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
            <androidx.recyclerview.widget.RecyclerView
                android:id="@+id/categoryRV"
                android:layout_width="match_parent"
                android:scrollbars="none"
-               android:layout_height="match_parent"/>
+               android:layout_height="match_parent"
+               android:visibility="gone"
+               />
 
         </LinearLayout>
 </androidx.core.widget.NestedScrollView>
