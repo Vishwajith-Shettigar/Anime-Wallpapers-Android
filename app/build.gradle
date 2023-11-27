@@ -82,4 +82,7 @@ dependencies {
     // skeleton loading
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
+    implementation "androidx.core:core-ktx:1.12.0"
+
+
 }

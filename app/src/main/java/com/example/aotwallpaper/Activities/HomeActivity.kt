@@ -2,6 +2,7 @@ package com.example.aotwallpaper.Activities
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +10,6 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
 import android.view.View
-import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -82,6 +82,7 @@ class HomeActivity : AppCompatActivity() {
         binding.rateLayout.setOnClickListener {
             performHapticFeedback()
             repelAnimation(it)
+            rateApp()
             Log.e("#", "rate clicked")
         }
 
@@ -90,12 +91,14 @@ class HomeActivity : AppCompatActivity() {
             performHapticFeedback()
             repelAnimation(it)
             Log.e("#", "share clicked")
+            shareApp()
         }
 
 
         binding.aboutusLayout.setOnClickListener {
             performHapticFeedback()
             repelAnimation(it)
+            startActivity(Intent(this,AboutUsActivity::class.java))
             Log.e("#", "about us clicked")
         }
 
@@ -144,5 +147,33 @@ class HomeActivity : AppCompatActivity() {
         animation.interpolator = android.view.animation.AccelerateInterpolator()
 
         view.startAnimation(animation)
+    }
+
+    private fun shareApp() {
+        val appPackageName = packageName
+        val appName = getString(R.string.app_name)
+        val playStoreLink = "https://play.google.com/store/apps/details?id=$appPackageName"
+
+        val shareMessage = "Check out Attack On Titan wallpaper App on the Play Store:\n$playStoreLink"
+
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+
+        // Verify that the intent will resolve to an activity
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(Intent.createChooser(intent, "Share $appName using"))
+        }
+    }
+
+    private fun rateApp() {
+        val appPackageName = packageName
+
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
+        } catch (e: android.content.ActivityNotFoundException) {
+            // If Google Play Store is not installed on the device, open the browser
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")))
+        }
     }
 }
