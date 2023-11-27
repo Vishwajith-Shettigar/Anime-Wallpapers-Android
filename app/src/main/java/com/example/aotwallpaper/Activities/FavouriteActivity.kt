@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -45,6 +46,7 @@ class FavouriteActivity : AppCompatActivity() {
 
         ).get(FavouriteViewmodel::class.java)
 
+
         binding.favouritesRV.layoutManager = GridLayoutManager(this, 2)
 
         binding.favouritesRV.apply {
@@ -55,7 +57,17 @@ class FavouriteActivity : AppCompatActivity() {
         lifecycleScope.launch {
             favouriteViewmodel.favwallpapers.collectLatest {
                 datalist=it
-                favouriteAdapter.setdata(datalist)
+                if(datalist.size==0){
+                    binding.favouriteLabel.visibility=View.GONE
+                    binding.parentfavRv.visibility=View.GONE
+                    binding.nofav.visibility=View.VISIBLE
+                }else {
+                    binding.favouriteLabel.visibility = View.VISIBLE
+                    binding.parentfavRv.visibility = View.VISIBLE
+                    binding.nofav.visibility = View.GONE
+                    favouriteAdapter.setdata(datalist)
+                }
+
             }
         }
     }
