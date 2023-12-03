@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:349687044166:android:298e9111cf86e4019fd247",
+        "mobilesdk_app_id": "1:349687044166:android:faea542275f6fa139fd247",
         "android_client_info": {
-          "package_name": "com.example.aotwallpaper"
+          "package_name": "lyka.aot.aotwallpaper"
         }
       },
       "oauth_client": [],
