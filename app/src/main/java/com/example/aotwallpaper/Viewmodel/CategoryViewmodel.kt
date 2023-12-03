@@ -47,7 +47,7 @@ class CategoryViewmodel(
                 getWallpapers()
 
             } else {
-                Log.e("#", "room call " + cat_id)
+
                 _wallpapers.value = datalist
             }
 

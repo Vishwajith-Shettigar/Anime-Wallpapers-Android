@@ -16,13 +16,11 @@
 
 
         <androidx.cardview.widget.CardView
-            android:layout_above="@+id/bottomviews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_above="@+id/bottomviews"
             android:layout_centerInParent="true"
             android:layout_margin="10dp"
-
             app:cardElevation="10dp">
 
             <ImageView
@@ -35,22 +33,21 @@
 
         <LinearLayout
             android:id="@+id/bottomviews"
-            android:elevation="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_margin="1dp"
+            android:elevation="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-               android:id="@+id/setWallpaperbtn"
+                android:id="@+id/setWallpaperbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
-                android:text="Set As Wallpaper"
                 android:layout_weight="8"
-                />
+                android:text="Set As Wallpaper" />
 
             <ImageView
                 android:id="@+id/favbtn"

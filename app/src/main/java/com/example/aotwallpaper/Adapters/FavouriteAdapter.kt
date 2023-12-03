@@ -36,7 +36,7 @@ class FavouriteAdapter(
 
 
         datalist = newdata
-        Log.e("#", "adapter " + datalist.size)
+
         notifyDataSetChanged()
 
     }

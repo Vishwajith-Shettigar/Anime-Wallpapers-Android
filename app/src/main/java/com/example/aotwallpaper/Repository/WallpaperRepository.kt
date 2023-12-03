@@ -10,8 +10,6 @@ import javax.inject.Inject
 class WallpaperRepository  @Inject constructor(private val wallpaperDao: WallpaperDao) {
 
     suspend fun insert(wallpaperlist: MutableList<Wallpaper>) {
-        Log.e("#",wallpaperlist.size.toString())
-        Log.e("#",wallpaperDao.toString())
         wallpaperDao.insertWallpapers(wallpaperlist)
     }
 

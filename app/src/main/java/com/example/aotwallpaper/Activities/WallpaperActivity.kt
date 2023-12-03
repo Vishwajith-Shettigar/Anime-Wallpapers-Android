@@ -65,7 +65,7 @@ class WallpaperActivity : AppCompatActivity() {
 
         binding.favbtn.setOnClickListener()
         {
-            Log.e("#","fav")
+
             if (!isFavourite) {
                 lifecycleScope.launch {
                     var favouriteEntity: FavouriteEntity? = null
@@ -73,7 +73,7 @@ class WallpaperActivity : AppCompatActivity() {
                         favouriteEntity = FavouriteEntity(id!!, imageUrl!!)
 
                     if (favouriteEntity != null) {
-                        Log.e("#", "inserting")
+
                         favouriteRepository.insert(favouriteEntity)
                     }
 
@@ -84,7 +84,7 @@ class WallpaperActivity : AppCompatActivity() {
                 lifecycleScope.launch {
 
                     if (id != null) {
-                        Log.e("#","deleet fav")
+
                         favouriteRepository.deleteFavourite(id)
                     }
                     removeFavourite()
@@ -140,7 +140,6 @@ class WallpaperActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        Log.e("#","on back pressed")
         val resultIntent = Intent()
         resultIntent.putExtra("modifiedData", "modifiedData")
         setResult(Activity.RESULT_OK, resultIntent)

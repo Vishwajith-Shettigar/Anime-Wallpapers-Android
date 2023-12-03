@@ -74,7 +74,6 @@ class HomeActivity : AppCompatActivity() {
         binding.favouriteLayout.setOnClickListener {
             performHapticFeedback()
             repelAnimation(it)
-            Log.e("#", "facouite clicked")
             startActivity(Intent(this,FavouriteActivity::class.java))
         }
 
@@ -83,14 +82,14 @@ class HomeActivity : AppCompatActivity() {
             performHapticFeedback()
             repelAnimation(it)
             rateApp()
-            Log.e("#", "rate clicked")
+
         }
 
 
         binding.shareLayout.setOnClickListener {
             performHapticFeedback()
             repelAnimation(it)
-            Log.e("#", "share clicked")
+
             shareApp()
         }
 
@@ -99,7 +98,7 @@ class HomeActivity : AppCompatActivity() {
             performHapticFeedback()
             repelAnimation(it)
             startActivity(Intent(this,AboutUsActivity::class.java))
-            Log.e("#", "about us clicked")
+
         }
 
         // set up category recuclrview
