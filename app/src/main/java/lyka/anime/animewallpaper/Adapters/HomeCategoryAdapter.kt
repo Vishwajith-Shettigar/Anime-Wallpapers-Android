@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Adapters
+package lyka.anime.animewallpaper.Adapters
 
 import android.content.Context
 import android.content.Intent
@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import lyka.aot.animewallpaper.Activities.CategoryActivity
-import lyka.aot.animewallpaper.Data.Category
-import lyka.aot.animewallpaper.R
+import lyka.anime.animewallpaper.Activities.CategoryActivity
+import lyka.anime.animewallpaper.Data.Category
+import lyka.anime.animewallpaper.R
 
 class HomeCategoryAdapter(private val context: Context, private var data: MutableList<Category>) :
     RecyclerView.Adapter<HomeCategoryAdapter.Myviewholder>() {
@@ -43,12 +43,13 @@ class HomeCategoryAdapter(private val context: Context, private var data: Mutabl
         Glide.with(context)
             .load(data[position].imageUrl)
             .placeholder(R.drawable.cornerradius)
+            .thumbnail(0.1f)
             .into(holder.imageView)
 
         holder.imageView.setOnClickListener {
-            var intent=Intent(context,CategoryActivity::class.java)
-            intent.putExtra("cat_id",data[position].cat_id)
-            intent.putExtra("cat_name",data[position].name)
+            var intent = Intent(context, CategoryActivity::class.java)
+            intent.putExtra("cat_id", data[position].cat_id)
+            intent.putExtra("cat_name", data[position].name)
             context.startActivity(intent)
         }
     }

@@ -1,9 +1,9 @@
-package lyka.aot.animewallpaper.Viewmodel
+package lyka.anime.animewallpaper.Viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import lyka.aot.animewallpaper.Repository.WallpaperRepository
-import lyka.aot.animewallpaper.Util.SharedPreferencesManager
+import lyka.anime.animewallpaper.Repository.WallpaperRepository
+import lyka.anime.animewallpaper.Util.SharedPreferencesManager
 import com.google.firebase.firestore.FirebaseFirestore
 import javax.inject.Inject
 

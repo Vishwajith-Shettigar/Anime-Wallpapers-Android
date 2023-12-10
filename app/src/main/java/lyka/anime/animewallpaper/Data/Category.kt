@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Data
+package lyka.anime.animewallpaper.Data
 
 data class Category(
      val cat_id:Int,

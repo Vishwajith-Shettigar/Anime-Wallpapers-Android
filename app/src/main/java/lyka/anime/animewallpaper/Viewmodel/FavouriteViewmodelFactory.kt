@@ -1,8 +1,8 @@
-package lyka.aot.animewallpaper.Viewmodel
+package lyka.anime.animewallpaper.Viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import lyka.aot.animewallpaper.Repository.FavouriteRepository
+import lyka.anime.animewallpaper.Repository.FavouriteRepository
 import javax.inject.Inject
 
 class FavouriteViewmodelFactory @Inject constructor(

@@ -1,11 +1,11 @@
-package lyka.aot.animewallpaper.DB
+package lyka.anime.animewallpaper.DB
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import lyka.aot.animewallpaper.DAO.FavouriteDao
-import lyka.aot.animewallpaper.DAO.WallpaperDao
-import lyka.aot.animewallpaper.Entity.FavouriteEntity
-import lyka.aot.animewallpaper.Entity.Wallpaper
+import lyka.anime.animewallpaper.DAO.FavouriteDao
+import lyka.anime.animewallpaper.DAO.WallpaperDao
+import lyka.anime.animewallpaper.Entity.FavouriteEntity
+import lyka.anime.animewallpaper.Entity.Wallpaper
 
 
 @Database(entities = [FavouriteEntity::class,Wallpaper::class],  exportSchema = false,version = 1)

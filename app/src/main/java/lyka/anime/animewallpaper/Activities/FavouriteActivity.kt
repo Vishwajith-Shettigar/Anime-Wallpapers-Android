@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Activities
+package lyka.anime.animewallpaper.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,13 +8,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import lyka.aot.animewallpaper.Adapters.FavouriteAdapter
-import lyka.aot.animewallpaper.AotApplication
-import lyka.aot.animewallpaper.Entity.FavouriteEntity
-import lyka.aot.animewallpaper.R
-import lyka.aot.animewallpaper.Viewmodel.FavouriteViewmodel
-import lyka.aot.animewallpaper.Viewmodel.FavouriteViewmodelFactory
-import lyka.aot.animewallpaper.databinding.ActivityFavouriteBinding
+import lyka.anime.animewallpaper.Adapters.FavouriteAdapter
+import lyka.anime.animewallpaper.AotApplication
+import lyka.anime.animewallpaper.Entity.FavouriteEntity
+import lyka.anime.animewallpaper.R
+import lyka.anime.animewallpaper.Viewmodel.FavouriteViewmodel
+import lyka.anime.animewallpaper.Viewmodel.FavouriteViewmodelFactory
+import lyka.anime.animewallpaper.databinding.ActivityFavouriteBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject

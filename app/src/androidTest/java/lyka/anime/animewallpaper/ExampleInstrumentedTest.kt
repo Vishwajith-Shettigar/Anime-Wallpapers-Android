@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper
+package lyka.anime.animewallpaper
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

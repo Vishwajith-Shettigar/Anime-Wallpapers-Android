@@ -1,10 +1,10 @@
-package lyka.aot.animewallpaper.DI
+package lyka.anime.animewallpaper.DI
 
 import android.app.Application
 import androidx.room.Room
-import lyka.aot.animewallpaper.DAO.FavouriteDao
-import lyka.aot.animewallpaper.DAO.WallpaperDao
-import lyka.aot.animewallpaper.DB.RoomDb
+import lyka.anime.animewallpaper.DAO.FavouriteDao
+import lyka.anime.animewallpaper.DAO.WallpaperDao
+import lyka.anime.animewallpaper.DB.RoomDb
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

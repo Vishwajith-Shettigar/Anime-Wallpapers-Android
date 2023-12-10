@@ -1,10 +1,10 @@
-package lyka.aot.animewallpaper.DAO
+package lyka.anime.animewallpaper.DAO
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import lyka.aot.animewallpaper.Entity.FavouriteEntity
+import lyka.anime.animewallpaper.Entity.FavouriteEntity
 
 @Dao
 interface FavouriteDao {

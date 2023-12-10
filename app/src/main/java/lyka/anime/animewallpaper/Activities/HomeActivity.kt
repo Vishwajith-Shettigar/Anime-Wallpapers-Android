@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Activities
+package lyka.anime.animewallpaper.Activities
 
 import android.content.Context
 import android.content.Intent
@@ -16,13 +16,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import lyka.aot.animewallpaper.Adapters.HomeCategoryAdapter
-import lyka.aot.animewallpaper.AotApplication
-import lyka.aot.animewallpaper.Data.Category
-import lyka.aot.animewallpaper.R
-import lyka.aot.animewallpaper.Viewmodel.HomeViewmodel
-import lyka.aot.animewallpaper.Viewmodel.HomeViewmodelFactory
-import lyka.aot.animewallpaper.databinding.ActivityHomeBinding
+import lyka.anime.animewallpaper.Adapters.HomeCategoryAdapter
+import lyka.anime.animewallpaper.AotApplication
+import lyka.anime.animewallpaper.Data.Category
+import lyka.anime.animewallpaper.R
+import lyka.anime.animewallpaper.Viewmodel.HomeViewmodel
+import lyka.anime.animewallpaper.Viewmodel.HomeViewmodelFactory
+import lyka.anime.animewallpaper.databinding.ActivityHomeBinding
 import javax.inject.Inject
 
 
@@ -92,7 +92,7 @@ class HomeActivity : AppCompatActivity() {
         binding.aboutusLayout.setOnClickListener {
             performHapticFeedback()
             repelAnimation(it)
-            startActivity(Intent(this, lyka.aot.animewallpaper.Activities.AboutUsActivity::class.java))
+            startActivity(Intent(this, lyka.anime.animewallpaper.Activities.AboutUsActivity::class.java))
 
         }
 

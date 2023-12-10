@@ -1,9 +1,9 @@
-package lyka.aot.animewallpaper.Viewmodel
+package lyka.anime.animewallpaper.Viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import lyka.aot.animewallpaper.Entity.FavouriteEntity
-import lyka.aot.animewallpaper.Repository.FavouriteRepository
+import lyka.anime.animewallpaper.Entity.FavouriteEntity
+import lyka.anime.animewallpaper.Repository.FavouriteRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

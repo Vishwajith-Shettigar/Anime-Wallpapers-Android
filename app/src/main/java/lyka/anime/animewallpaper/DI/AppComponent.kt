@@ -1,9 +1,9 @@
-package lyka.aot.animewallpaper.DI
+package lyka.anime.animewallpaper.DI
 
 import android.app.Application
-import lyka.aot.animewallpaper.Activities.*
-import lyka.aot.animewallpaper.Adapters.CategoryAdapter
-import lyka.aot.animewallpaper.Adapters.FavouriteAdapter
+import lyka.anime.animewallpaper.Activities.*
+import lyka.anime.animewallpaper.Adapters.CategoryAdapter
+import lyka.anime.animewallpaper.Adapters.FavouriteAdapter
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

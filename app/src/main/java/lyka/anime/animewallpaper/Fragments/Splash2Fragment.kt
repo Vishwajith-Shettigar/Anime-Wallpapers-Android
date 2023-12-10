@@ -1,11 +1,11 @@
-package lyka.aot.animewallpaper.Fragments
+package lyka.anime.animewallpaper.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import lyka.aot.animewallpaper.R
+import lyka.anime.animewallpaper.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

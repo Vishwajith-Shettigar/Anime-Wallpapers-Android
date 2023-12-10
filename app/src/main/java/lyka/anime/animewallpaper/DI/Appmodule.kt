@@ -1,7 +1,7 @@
-package lyka.aot.animewallpaper.DI
+package lyka.anime.animewallpaper.DI
 
 import android.app.Application
-import lyka.aot.animewallpaper.Util.SharedPreferencesManager
+import lyka.anime.animewallpaper.Util.SharedPreferencesManager
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides

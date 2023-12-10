@@ -1,9 +1,9 @@
-package lyka.aot.animewallpaper.DI
+package lyka.anime.animewallpaper.DI
 
 import androidx.lifecycle.ViewModelProvider
-import lyka.aot.animewallpaper.Viewmodel.HomeViewmodelFactory
-import lyka.aot.animewallpaper.Viewmodel.CategoryViewmodelFactory
-import lyka.aot.animewallpaper.Viewmodel.FavouriteViewmodelFactory
+import lyka.anime.animewallpaper.Viewmodel.HomeViewmodelFactory
+import lyka.anime.animewallpaper.Viewmodel.CategoryViewmodelFactory
+import lyka.anime.animewallpaper.Viewmodel.FavouriteViewmodelFactory
 import dagger.Binds
 import dagger.Module
 

@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Entity
+package lyka.anime.animewallpaper.Entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

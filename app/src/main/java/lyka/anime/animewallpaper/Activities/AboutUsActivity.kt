@@ -1,11 +1,11 @@
-package lyka.aot.animewallpaper.Activities
+package lyka.anime.animewallpaper.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
-import lyka.aot.animewallpaper.R
-import lyka.aot.animewallpaper.databinding.ActivityAboutUsBinding
+import lyka.anime.animewallpaper.R
+import lyka.anime.animewallpaper.databinding.ActivityAboutUsBinding
 
 class AboutUsActivity : AppCompatActivity() {
     lateinit var binding:ActivityAboutUsBinding

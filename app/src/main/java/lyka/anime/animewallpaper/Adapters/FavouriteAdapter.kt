@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Adapters
+package lyka.anime.animewallpaper.Adapters
 
 import android.app.Activity
 import android.content.Context
@@ -10,10 +10,10 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import lyka.aot.animewallpaper.Activities.WallpaperActivity
-import lyka.aot.animewallpaper.Entity.FavouriteEntity
-import lyka.aot.animewallpaper.R
-import lyka.aot.animewallpaper.Repository.FavouriteRepository
+import lyka.anime.animewallpaper.Activities.WallpaperActivity
+import lyka.anime.animewallpaper.Entity.FavouriteEntity
+import lyka.anime.animewallpaper.R
+import lyka.anime.animewallpaper.Repository.FavouriteRepository
 import javax.inject.Inject
 
 class FavouriteAdapter(

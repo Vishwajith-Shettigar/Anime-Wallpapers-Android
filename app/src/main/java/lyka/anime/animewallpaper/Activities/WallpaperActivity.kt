@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Activities
+package lyka.anime.animewallpaper.Activities
 
 import android.app.Activity
 import android.content.Intent
@@ -11,11 +11,11 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import lyka.aot.animewallpaper.AotApplication
-import lyka.aot.animewallpaper.Entity.FavouriteEntity
-import lyka.aot.animewallpaper.R
-import lyka.aot.animewallpaper.Repository.FavouriteRepository
-import lyka.aot.animewallpaper.databinding.ActivityWallpaperBinding
+import lyka.anime.animewallpaper.AotApplication
+import lyka.anime.animewallpaper.Entity.FavouriteEntity
+import lyka.anime.animewallpaper.R
+import lyka.anime.animewallpaper.Repository.FavouriteRepository
+import lyka.anime.animewallpaper.databinding.ActivityWallpaperBinding
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import javax.inject.Inject

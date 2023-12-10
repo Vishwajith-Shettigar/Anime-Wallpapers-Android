@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Activities
+package lyka.anime.animewallpaper.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,14 +10,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import lyka.aot.animewallpaper.Adapters.SplashSliderAdapter
-import lyka.aot.animewallpaper.AotApplication
-import lyka.aot.animewallpaper.Fragments.Splash1Fragment
-import lyka.aot.animewallpaper.Fragments.Splash2Fragment
-import lyka.aot.animewallpaper.Fragments.Splash3Fragment
-import lyka.aot.animewallpaper.R
-import lyka.aot.animewallpaper.Util.SharedPreferencesManager
-import lyka.aot.animewallpaper.databinding.SplashScreenActivityBinding
+import lyka.anime.animewallpaper.Adapters.SplashSliderAdapter
+import lyka.anime.animewallpaper.AotApplication
+import lyka.anime.animewallpaper.Fragments.Splash1Fragment
+import lyka.anime.animewallpaper.Fragments.Splash2Fragment
+import lyka.anime.animewallpaper.Fragments.Splash3Fragment
+import lyka.anime.animewallpaper.R
+import lyka.anime.animewallpaper.Util.SharedPreferencesManager
+import lyka.anime.animewallpaper.databinding.SplashScreenActivityBinding
 import javax.inject.Inject
 
 class SplashscreenActivity : AppCompatActivity() {

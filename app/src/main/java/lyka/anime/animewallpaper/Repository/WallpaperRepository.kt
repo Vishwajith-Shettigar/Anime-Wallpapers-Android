@@ -1,7 +1,7 @@
-package lyka.aot.animewallpaper.Repository
+package lyka.anime.animewallpaper.Repository
 
-import lyka.aot.animewallpaper.DAO.WallpaperDao
-import lyka.aot.animewallpaper.Entity.Wallpaper
+import lyka.anime.animewallpaper.DAO.WallpaperDao
+import lyka.anime.animewallpaper.Entity.Wallpaper
 import javax.inject.Inject
 
 class WallpaperRepository  @Inject constructor(private val wallpaperDao: WallpaperDao) {

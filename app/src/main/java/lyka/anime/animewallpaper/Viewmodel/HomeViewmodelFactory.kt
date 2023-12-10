@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Viewmodel
+package lyka.anime.animewallpaper.Viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

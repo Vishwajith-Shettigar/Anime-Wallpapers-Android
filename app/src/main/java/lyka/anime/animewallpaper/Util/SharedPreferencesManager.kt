@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Util
+package lyka.anime.animewallpaper.Util
 
 import android.content.Context
 import android.content.SharedPreferences

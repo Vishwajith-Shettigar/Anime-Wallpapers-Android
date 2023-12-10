@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Fragments
+package lyka.anime.animewallpaper.Fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import lyka.aot.animewallpaper.Activities.HomeActivity
-import lyka.aot.animewallpaper.R
-import lyka.aot.animewallpaper.databinding.FragmentSplash3Binding
+import lyka.anime.animewallpaper.Activities.HomeActivity
+import lyka.anime.animewallpaper.R
+import lyka.anime.animewallpaper.databinding.FragmentSplash3Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

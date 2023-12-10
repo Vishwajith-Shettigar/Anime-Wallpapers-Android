@@ -1,4 +1,4 @@
-package lyka.aot.animewallpaper.Adapters
+package lyka.anime.animewallpaper.Adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
