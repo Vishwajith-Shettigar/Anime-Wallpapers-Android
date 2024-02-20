@@ -10,7 +10,7 @@
 
 
     <application
-        android:name=".AotApplication"
+        android:name=".animeApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,7 +20,7 @@
         android:theme="@style/Theme.animewallpapers"
         tools:targetApi="31">
         <activity
-            android:name="lyka.aot.animewallpapers.lyka.aot.animewallpapers.Activities.AboutUsActivity"
+            android:name="lyka.anime.animewallpapers.Activities.AboutUsActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.FavouriteActivity"
