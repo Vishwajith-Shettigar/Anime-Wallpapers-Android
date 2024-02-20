@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- rounded_bottom_navigation_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="#0A0A0B"
+        android:endColor="#5D4E97"
+        android:angle="90"/>
+    <corners android:radius="30dp" /> <!-- Adjust the radius as needed -->
+</shape>

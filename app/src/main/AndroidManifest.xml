@@ -6,19 +6,21 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
     <application
-        android:name=".AotApplication"
+        android:name=".animeApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/phoneicon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AotWallpaper"
+        android:theme="@style/Theme.animewallpapers"
         tools:targetApi="31">
         <activity
-            android:name="lyka.anime.animewallpaper.Activities.AboutUsActivity"
+            android:name="lyka.anime.animewallpapers.Activities.AboutUsActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.FavouriteActivity"
@@ -27,7 +29,7 @@
             android:name=".Activities.WallpaperActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.CategoryActivity"
+            android:name=".Activities.WallpaperListActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.HomeActivity"
