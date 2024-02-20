@@ -2,5 +2,6 @@
 <resources>
 
     <color name="sidenav">#FF000000</color>
+    <color name="heading">#FFFFFF</color>
 
 </resources>

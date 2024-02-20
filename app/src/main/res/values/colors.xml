@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="sidenav">#FFFFFFFF</color>
+    <color name="heading">#121212</color>
 </resources>
