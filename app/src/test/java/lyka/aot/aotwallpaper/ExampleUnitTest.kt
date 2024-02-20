@@ -1,4 +1,4 @@
-package lyka.aot.aotwallpaper
+package lyka.aot.animewallpapers
 
 import org.junit.Test
 

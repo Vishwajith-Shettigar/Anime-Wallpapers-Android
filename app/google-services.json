@@ -7,9 +7,28 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:349687044166:android:a2675c93fa82458c9fd247",
+        "android_client_info": {
+          "package_name": "lyka.aot.animewallpapers"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAumfyIb2Mq0pCBz_P-JeUhmGZC8_pMRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:349687044166:android:faea542275f6fa139fd247",
         "android_client_info": {
-          "package_name": "lyka.aot.aotwallpaper"
+          "package_name": "lyka.aot.animewallpapers"
         }
       },
       "oauth_client": [],

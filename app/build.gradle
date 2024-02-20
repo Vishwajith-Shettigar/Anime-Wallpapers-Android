@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace 'lyka.aot.aotwallpaper'
+    namespace 'lyka.aot.animewallpapers'
     compileSdk 34
 
     defaultConfig {
-        applicationId "lyka.aot.aotwallpaper"
+        applicationId "lyka.aot.animewallpapers"
         minSdk 24
         targetSdk 33
         versionCode 2
