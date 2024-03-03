@@ -26,7 +26,7 @@ class CategoryViewmodel(
 ) : ViewModel() {
   var lastVisibleDocument: DocumentSnapshot? = null
   var pageSize = 10
-  var noPages=false
+  var noPages = false
   private val _wallpapers = MutableStateFlow<MutableList<Wallpaper>>(mutableListOf())
   val wallpapers: StateFlow<MutableList<Wallpaper>> get() = _wallpapers
 
@@ -64,7 +64,8 @@ class CategoryViewmodel(
                 )
                 datalist.add(data)
               }
-              lastVisibleDocument = it.result.documents.last()
+              if (it.result.documents.size != 0)
+                lastVisibleDocument = it.result.documents.last()
               _wallpapers.value = datalist
               viewModelScope.launch {
                 insertRoom(datalist)
@@ -84,7 +85,8 @@ class CategoryViewmodel(
     viewModelScope.launch {
       try {
         firestore.collection("AOT").document("images").collection(cat_name)
-          .orderBy(FieldPath.documentId()).startAfter(lastVisibleDocument!!.id).limit(pageSize.toLong())
+          .orderBy(FieldPath.documentId()).startAfter(lastVisibleDocument!!.id)
+          .limit(pageSize.toLong())
           .get()
           .addOnCompleteListener {
 
@@ -97,10 +99,10 @@ class CategoryViewmodel(
                 )
                 datalist.add(data)
               }
-              if(it.result.documents.size!=0)
-              lastVisibleDocument = it.result.documents.last()
+              if (it.result.documents.size != 0)
+                lastVisibleDocument = it.result.documents.last()
               else
-                noPages=true
+                noPages = true
               _wallpapers.value = datalist
               viewModelScope.launch {
                 insertRoom(datalist)
