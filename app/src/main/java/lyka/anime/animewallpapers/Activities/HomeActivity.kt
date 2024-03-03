@@ -160,7 +160,7 @@ class HomeActivity : AppCompatActivity() {
     val appName = getString(R.string.app_name)
     val playStoreLink = "https://play.google.com/store/apps/details?id=$appPackageName"
 
-    val shareMessage = "Check out Attack On Titan wallpaper App on the Play Store:\n$playStoreLink"
+    val shareMessage = "Check out Anime wallpapers App on the Play Store:\n$playStoreLink"
 
     val intent = Intent(Intent.ACTION_SEND)
     intent.type = "text/plain"
