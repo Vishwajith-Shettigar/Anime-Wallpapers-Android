@@ -41,9 +41,7 @@ class HomeActivity : AppCompatActivity() {
 
   private lateinit var binding: ActivityHomeBinding
 
-  private lateinit var categoryViewmodel: HomeViewmodel
 
-  private var datalist: MutableList<Category> = mutableListOf()
   val viewPagerAdapter = ViewPagerAdapter(this)
 
   override fun onCreate(savedInstanceState: Bundle?) {
