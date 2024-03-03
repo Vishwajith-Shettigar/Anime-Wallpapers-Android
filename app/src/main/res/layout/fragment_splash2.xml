@@ -21,7 +21,7 @@
             android:id="@+id/s2textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Attack On Titan"
+            android:text="Anime Wallpapers"
             android:textSize="30dp"
             android:fontFamily="sans-serif-smallcaps"
             android:textColor="#FFFFFF"

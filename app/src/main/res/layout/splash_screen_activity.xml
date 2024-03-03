@@ -80,7 +80,7 @@
                 android:layout_height="300dp"
                 android:layout_marginTop="100dp"
                 android:elevation="10dp"
-                android:src="@drawable/logoaot"
+                android:src="@drawable/animelogo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -91,10 +91,10 @@
                 android:layout_height="wrap_content"
                 android:elevation="10dp"
                 android:fontFamily="sans-serif-smallcaps"
-                android:text="Attack On Titan"
+                android:text="Anime Wallpapers"
                 android:textSize="35dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/splashlogo"
+                app:layout_constraintTop_toBottomOf="@id/splashlogo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 

@@ -74,7 +74,7 @@ android:layout_marginTop="40dp"
                     android:layout_width="200dp"
                     android:layout_height="300dp"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/logoaot" />
+                    app:srcCompat="@drawable/animelogo" />
 
                 <LinearLayout
                     android:id="@+id/favourite_layout"
