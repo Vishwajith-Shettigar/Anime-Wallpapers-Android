@@ -10,8 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Fragments.HomeFragment"
-        >
+        tools:context=".Fragments.HomeFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
@@ -29,9 +28,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/homescreengradiantbackground"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:background="@drawable/homescreengradiantbackground"
 
                     >
 
@@ -109,6 +108,13 @@
 
                     </LinearLayout>
 
+                    <com.google.android.gms.ads.AdView
+                        android:id="@+id/homescreen_adview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:adSize="BANNER"
+                        app:adUnitId="@string/home_screen_ad_unit_id" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -120,7 +126,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Trending"
-                            android:textColor="@color/heading"                            android:textSize="30dp"
+                            android:textColor="@color/heading"
+                            android:textSize="30dp"
                             android:textStyle="bold" />
 
                         <ImageView

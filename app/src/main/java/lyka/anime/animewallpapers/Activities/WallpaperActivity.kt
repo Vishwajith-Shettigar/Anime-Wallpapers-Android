@@ -14,6 +14,9 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import lyka.anime.animewallpapers.animeApplication
 import lyka.anime.animewallpapers.Entity.FavouriteEntity
 import lyka.anime.animewallpapers.R
@@ -29,6 +32,13 @@ class WallpaperActivity : AppCompatActivity() {
 
   @Inject
   lateinit var favouriteRepository: FavouriteRepository
+
+  private var mInterstitialAd: InterstitialAd? = null
+  private final val TAG = "WallpaperActivity"
+
+  private var isSetWallpaper = false
+
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
@@ -39,6 +49,46 @@ class WallpaperActivity : AppCompatActivity() {
     )
     (application as animeApplication).appComponent.injectWallpaperActivity(this)
     binding = DataBindingUtil.setContentView(this, R.layout.activity_wallpaper)
+
+    // Interstitial ad
+
+    MobileAds.initialize(this)
+    val adRequest = AdRequest.Builder().build()
+    InterstitialAd.load(this,
+      getString(R.string.wallpaper_screen_interstitial_ad_id),
+      adRequest,
+      object : InterstitialAdLoadCallback() {
+
+        override fun onAdFailedToLoad(adError: LoadAdError) {
+          adError.toString().let { Log.d(TAG, it) }
+          mInterstitialAd = null
+        }
+
+        override fun onAdLoaded(interstitialAd: InterstitialAd) {
+          Log.d(TAG, "Ad was loaded.")
+          mInterstitialAd = interstitialAd
+
+          mInterstitialAd!!.fullScreenContentCallback = object : FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() {
+              // Ad dismissed callback
+            }
+
+            override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+              // Ad failed to show callback
+            }
+
+            override fun onAdShowedFullScreenContent() {
+              super.onAdShowedFullScreenContent()
+              mInterstitialAd = null
+            }
+          }
+
+
+        }
+
+      }
+    )
+
     val intent = intent
     val imageUrl = intent.getStringExtra("imageUrl")
     var isFavourite = intent.getBooleanExtra("isFavourite", false)
@@ -102,6 +152,7 @@ class WallpaperActivity : AppCompatActivity() {
   }
 
   private fun setWallpaperUsingIntent(bitmap: Bitmap) {
+    isSetWallpaper = true
     // Get the content URI for the bitmap
     val contentUri = getImageUri(bitmap)
     val wallpaperIntent = Intent(Intent.ACTION_ATTACH_DATA)
@@ -146,7 +197,10 @@ class WallpaperActivity : AppCompatActivity() {
   }
 
   override fun onBackPressed() {
+    if (isSetWallpaper)
+      mInterstitialAd?.show(this)
     super.onBackPressed()
+
     val resultIntent = Intent()
     resultIntent.putExtra("modifiedData", "modifiedData")
     setResult(Activity.RESULT_OK, resultIntent)
