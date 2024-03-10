@@ -30,6 +30,9 @@ class CategoryViewmodel(
   private val _wallpapers = MutableStateFlow<MutableList<Wallpaper>>(mutableListOf())
   val wallpapers: StateFlow<MutableList<Wallpaper>> get() = _wallpapers
 
+  private val _showLoadingBottom= MutableStateFlow<Boolean>(false)
+  val showLoadingBottom:StateFlow<Boolean>get() =_showLoadingBottom
+
   init {
 
     viewModelScope.launch {
@@ -37,13 +40,6 @@ class CategoryViewmodel(
 
     }
 
-  }
-
-  suspend fun insertRoom(datalist: MutableList<Wallpaper>) {
-    AppCoroutineScope.scope.launch(IO) {
-      if (datalist.isNotEmpty())
-        wallpaperRepository.insert(datalist)
-    }
   }
 
   suspend fun getWallpapers() {
@@ -67,10 +63,6 @@ class CategoryViewmodel(
               if (it.result.documents.size != 0)
                 lastVisibleDocument = it.result.documents.last()
               _wallpapers.value = datalist
-              viewModelScope.launch {
-                insertRoom(datalist)
-              }
-
             } else {
             }
           }
@@ -104,10 +96,6 @@ class CategoryViewmodel(
               else
                 noPages = true
               _wallpapers.value = datalist
-              viewModelScope.launch {
-                insertRoom(datalist)
-              }
-
             } else {
             }
           }

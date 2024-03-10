@@ -4,11 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import lyka.anime.animewallpapers.Adapters.CategoryAdapter
 import lyka.anime.animewallpapers.animeApplication
 import lyka.anime.animewallpapers.Entity.Wallpaper
@@ -38,6 +41,11 @@ class WallpaperListActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = DataBindingUtil.setContentView(this, R.layout.activity_category)
+
+    MobileAds.initialize(this)
+    val adRequest = AdRequest.Builder().build()
+    binding.wallpaperListAdview.loadAd(adRequest)
+
     categoryadapter = CategoryAdapter(datalist, this, binding.wallpaperRV, false, this)
     // injection
     (application as animeApplication).appComponent.injectCategoryActivity(this)
@@ -50,7 +58,11 @@ class WallpaperListActivity : AppCompatActivity() {
 
     val capitalizedText = catname?.substring(0, 1)?.uppercase() + catname?.substring(1)
 
-    binding.categoryLabel.text = capitalizedText
+    binding.categoryLabel.apply {
+      if (capitalizedText.length > 12)
+        textSize = 44F
+      text = capitalizedText
+    }
 
     if (catname != null) {
       wallpaperViewmodelFactory.setCatName(catname, cat_id)
@@ -64,7 +76,6 @@ class WallpaperListActivity : AppCompatActivity() {
 
     binding.wallpaperRV.apply {
       adapter = categoryadapter
-
     }
 
 
@@ -83,25 +94,23 @@ class WallpaperListActivity : AppCompatActivity() {
         if (lastVisibleItemPosition == totalItemCount - 1 && totalItemCount > 0 && !wallpaperViewmodel.noPages) {
 
           lifecycleScope.launch {
+            binding.progressbarBottom.visibility=View.VISIBLE
             wallpaperViewmodel.getMoreWallpapers()
 
           }
         }
-
       }
-
-
     })
+
     lifecycleScope.launchWhenStarted {
 
       wallpaperViewmodel.wallpapers.collect { dataList ->
 
         datalist = dataList
         categoryadapter.setdata(datalist)
-
+        binding.progressbarBottom.visibility=View.GONE
       }
     }
-
   }
 
   @Deprecated("Deprecated in Java")

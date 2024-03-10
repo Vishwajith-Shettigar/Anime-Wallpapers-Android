@@ -96,8 +96,7 @@ class FeatureAndTrendingViewmodel(
                 datalist.add(data)
               }
               if(datalist.size!=0)
-              _category.value = datalist.get(Random.nextInt(0, 3))
-
+              _category.value = datalist.get(Random.nextInt(0, datalist.size-1))
             } else {
             }
           }

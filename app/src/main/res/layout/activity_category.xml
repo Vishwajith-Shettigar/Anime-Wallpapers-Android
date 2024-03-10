@@ -18,10 +18,24 @@
             android:padding="10dp"
             android:text="Friends"
             android:textColor="@color/heading"
-            android:textSize="60dp"
+            android:textSize="50dp"
             android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/wallpaperList_adview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:adSize="BANNER"
+            app:adUnitId="@string/wallpaper_list_screen_ad_unit_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/category_label"
+            />
+
 
         <ProgressBar
             android:id="@+id/progressbar"
@@ -37,11 +51,24 @@
             android:id="@+id/wallpaperRV"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="3dp"
+            android:layout_margin="5dp"
+            app:layout_constraintBottom_toTopOf="@id/progressbarBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wallpaperList_adview" />
+
+        <ProgressBar
+            android:id="@+id/progressbarBottom"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:progressBackgroundTint="@color/purple_200"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/category_label" />
+
+
+           />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

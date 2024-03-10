@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import javax.inject.Inject
 import kotlin.random.Random
 import kotlinx.coroutines.delay
@@ -67,6 +69,13 @@ class HomeFragment : Fragment() {
   ): View? {
 
     binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+    // banner add
+    MobileAds.initialize(requireContext())
+    val adRequest = AdRequest.Builder().build()
+    binding.homescreenAdview.loadAd(adRequest)
+
+
     categoryadapter = CategoryAdapter(datalist, activity as Context, binding.trendingRv, true)
 
     // injection

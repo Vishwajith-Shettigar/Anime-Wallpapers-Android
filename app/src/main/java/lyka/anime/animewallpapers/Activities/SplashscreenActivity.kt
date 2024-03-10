@@ -38,7 +38,7 @@ class SplashscreenActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     (application as animeApplication).appComponent.injectSplashScreenActivity(this)
-    requestWindowFeature(Window.FEATURE_NO_TITLE)
+    supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
     window.setFlags(
       WindowManager.LayoutParams.FLAG_FULLSCREEN,
       WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -74,9 +74,9 @@ class SplashscreenActivity : AppCompatActivity() {
               val docref = collectionRef
                 .document(document.id)
               val curviews = document.getLong("views")
-
               docref.update("views", curviews!! + 1)
                 .addOnSuccessListener {
+                  Log.e("#", "Success")
                 }
                 .addOnFailureListener {
 
