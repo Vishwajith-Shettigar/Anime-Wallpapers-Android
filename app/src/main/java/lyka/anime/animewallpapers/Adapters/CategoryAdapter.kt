@@ -126,7 +126,6 @@ class CategoryAdapter(
       .load(datalist[position].imageUrl)
       .error(R.drawable.cornerradius)
       .thumbnail(0.1f)
-      .diskCacheStrategy(DiskCacheStrategy.ALL)
       .listener(object : RequestListener<Drawable?> {
         override fun onLoadFailed(
           e: GlideException?,

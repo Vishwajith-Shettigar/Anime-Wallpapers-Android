@@ -58,7 +58,11 @@ class WallpaperListActivity : AppCompatActivity() {
 
     val capitalizedText = catname?.substring(0, 1)?.uppercase() + catname?.substring(1)
 
-    binding.categoryLabel.text = capitalizedText
+    binding.categoryLabel.apply {
+      if (capitalizedText.length > 12)
+        textSize = 44F
+      text = capitalizedText
+    }
 
     if (catname != null) {
       wallpaperViewmodelFactory.setCatName(catname, cat_id)
@@ -72,7 +76,6 @@ class WallpaperListActivity : AppCompatActivity() {
 
     binding.wallpaperRV.apply {
       adapter = categoryadapter
-
     }
 
 
@@ -91,25 +94,23 @@ class WallpaperListActivity : AppCompatActivity() {
         if (lastVisibleItemPosition == totalItemCount - 1 && totalItemCount > 0 && !wallpaperViewmodel.noPages) {
 
           lifecycleScope.launch {
+            binding.progressbarBottom.visibility=View.VISIBLE
             wallpaperViewmodel.getMoreWallpapers()
 
           }
         }
-
       }
-
-
     })
+
     lifecycleScope.launchWhenStarted {
 
       wallpaperViewmodel.wallpapers.collect { dataList ->
 
         datalist = dataList
         categoryadapter.setdata(datalist)
-
+        binding.progressbarBottom.visibility=View.GONE
       }
     }
-
   }
 
   @Deprecated("Deprecated in Java")
