@@ -23,6 +23,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/wallpaperList_adview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:adSize="BANNER"
+            app:adUnitId="@string/wallpaper_list_screen_ad_unit_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/category_label"
+            />
+
+
         <ProgressBar
             android:id="@+id/progressbar"
             android:layout_width="50dp"
@@ -37,11 +50,11 @@
             android:id="@+id/wallpaperRV"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="3dp"
+            android:layout_margin="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/category_label" />
+            app:layout_constraintTop_toBottomOf="@id/wallpaperList_adview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

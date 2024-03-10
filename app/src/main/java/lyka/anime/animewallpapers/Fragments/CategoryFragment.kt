@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -35,6 +37,11 @@ class CategoryFragment : Fragment() {
   ): View? {
     binding = FragmentCategoryBinding.inflate(inflater, container, false)
     (requireActivity().application as animeApplication).appComponent.injectCategoryFragment(this)
+
+    // banner add
+    MobileAds.initialize(requireContext())
+    val adRequest=AdRequest.Builder().build()
+    binding.categoryAdview.loadAd(adRequest)
 
     binding.categoryRV.visibility = View.GONE
     binding.skeletonparent.visibility = View.VISIBLE

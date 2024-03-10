@@ -4,6 +4,16 @@
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
 
+    <string name="app_id">ca-app-pub-5050279508629475~3871641218</string>
+
+
+    <!--   banner ad-->
+    <string name="banner_ad_unit_id">ca-app-pub-5050279508629475/5119722826</string>
+    <string name="home_screen_ad_unit_id">ca-app-pub-5050279508629475/7610262599</string>
+    <string name="wallpaper_list_screen_ad_unit_id">ca-app-pub-5050279508629475/4573035716</string>
+
+    <!--  Interstitial ad  -->
+    <string name="wallpaper_screen_interstitial_ad_id">"ca-app-pub-5050279508629475/9198676432"</string>
 
     <!-- res/values/strings.xml -->
 
