@@ -115,7 +115,7 @@ class HomeFragment : Fragment() {
       featureAndTrendingViewmodel.trendingWallpapers.collect { dataList ->
 
         datalist = dataList
-        categoryadapter.setdata(datalist)
+        categoryadapter.setdata(datalist,true)
 
 
       }

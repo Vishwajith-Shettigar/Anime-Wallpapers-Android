@@ -61,6 +61,7 @@ class FeatureAndTrendingViewmodel(
                 datalist.add(data)
               }
               datalist.shuffle()
+              _trendingWallpapers.value.clear()
               _trendingWallpapers.value = datalist
 
 

@@ -56,6 +56,15 @@ class CategoryAdapter(
     notifyDataSetChanged()
 
   }
+  suspend fun setdata(newdata: MutableList<Wallpaper>,isTrending:Boolean) {
+
+    loadFavourites()
+    newdata.shuffle()
+    datalist.clear()
+    datalist.addAll(newdata)
+    notifyDataSetChanged()
+
+  }
 
 
   suspend fun notifyFavouriteChanges() {
