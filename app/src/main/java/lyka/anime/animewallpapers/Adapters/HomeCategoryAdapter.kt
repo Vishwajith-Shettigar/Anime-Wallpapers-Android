@@ -74,7 +74,6 @@ class HomeCategoryAdapter(private val context: Context, private var data: Mutabl
             .load(data[position].imageUrl)
             .error(R.drawable.cornerradius)
             .thumbnail(0.1f)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .listener(object : RequestListener<Drawable?> {
                 override fun onLoadFailed(
                     e: GlideException?,
