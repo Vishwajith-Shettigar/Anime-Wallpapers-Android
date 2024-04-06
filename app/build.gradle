@@ -90,4 +90,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:23.0.0'
 
 
+    // loading button
+    implementation("com.github.leandroborgesferreira:loading-button-android:2.3.0")
+
 }
