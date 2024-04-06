@@ -145,34 +145,46 @@ class HomeFragment : Fragment() {
     }
     binding.homescreenicon1.setOnClickListener {
       lifecycleScope.launch {
-        val isFavourite = featureAndTrendingViewmodel.isFavorite(threeImages[0].id)
-        val intent = Intent(context, WallpaperActivity::class.java)
-        intent.putExtra("imageUrl", threeImages[0].imageUrl)
-        intent.putExtra("isFavourite", isFavourite)
-        intent.putExtra("id", threeImages[0].id)
-        (context as Activity).startActivityForResult(intent, 1001)
+        try {
+
+          val isFavourite = featureAndTrendingViewmodel.isFavorite(threeImages[0].id)
+          val intent = Intent(context, WallpaperActivity::class.java)
+          intent.putExtra("imageUrl", threeImages[0].imageUrl)
+          intent.putExtra("isFavourite", isFavourite)
+          intent.putExtra("id", threeImages[0].id)
+          (context as Activity).startActivityForResult(intent, 1001)
+        }
+        catch (_:Exception){
+
+        }
       }
     }
 
     binding.homescreenicon2.setOnClickListener {
       lifecycleScope.launch {
-        val isFavourite = featureAndTrendingViewmodel.isFavorite(threeImages[1].id)
-        val intent = Intent(context, WallpaperActivity::class.java)
-        intent.putExtra("imageUrl", threeImages[1].imageUrl)
-        intent.putExtra("isFavourite", isFavourite)
-        intent.putExtra("id", threeImages[1].id)
-        (context as Activity).startActivityForResult(intent, 1001)
+        try {
+          val isFavourite = featureAndTrendingViewmodel.isFavorite(threeImages[1].id)
+          val intent = Intent(context, WallpaperActivity::class.java)
+          intent.putExtra("imageUrl", threeImages[1].imageUrl)
+          intent.putExtra("isFavourite", isFavourite)
+          intent.putExtra("id", threeImages[1].id)
+          (context as Activity).startActivityForResult(intent, 1001)
+        }catch (_:Exception){}
       }
     }
     binding.homescreenicon3.setOnClickListener {
       lifecycleScope.launch {
+        try {
         val isFavourite = featureAndTrendingViewmodel.isFavorite(threeImages[2].id)
         val intent = Intent(context, WallpaperActivity::class.java)
         intent.putExtra("imageUrl", threeImages[2].imageUrl)
         intent.putExtra("isFavourite", isFavourite)
         intent.putExtra("id", threeImages[2].id)
         (context as Activity).startActivityForResult(intent, 1001)
+        }catch (_:Exception){}
       }
+
+
 
 
     }
@@ -195,10 +207,12 @@ class HomeFragment : Fragment() {
 
 
     binding.featuredImage.setOnClickListener {
+      try{
       var intent = Intent(context, WallpaperListActivity::class.java)
       intent.putExtra("cat_id", category.cat_id)
       intent.putExtra("cat_name", category.name)
       startActivity(intent)
+    }catch (_:Exception){}
     }
 
 
