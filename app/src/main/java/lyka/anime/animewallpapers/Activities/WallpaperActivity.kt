@@ -3,17 +3,20 @@ package lyka.anime.animewallpapers.Activities
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
+import androidx.annotation.MainThread
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -25,6 +28,9 @@ import lyka.anime.animewallpapers.databinding.ActivityWallpaperBinding
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import javax.inject.Inject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 
 
 class WallpaperActivity : AppCompatActivity() {
@@ -108,9 +114,12 @@ class WallpaperActivity : AppCompatActivity() {
         override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
           // Set the loaded bitmap as wallpaper when the button is clicked
           binding.setWallpaperbtn.setOnClickListener {
-            setWallpaperUsingIntent(resource)
+            (it as CircularProgressButton).startAnimation()
+            CoroutineScope(Dispatchers.Main).launch {
+              delay(1000) // Delay for 1 second
+              setWallpaperUsingIntent(resource)
+            }
           }
-
           // Display the loaded bitmap in the ImageView
           binding.image.setImageBitmap(resource)
         }
@@ -161,8 +170,13 @@ class WallpaperActivity : AppCompatActivity() {
     wallpaperIntent.putExtra("mimeType", "image/png")
     wallpaperIntent.putExtra(Intent.EXTRA_STREAM, contentUri)
     wallpaperIntent.putExtra("finishActivityOnSaveCompleted", true)
-
     startActivity(Intent.createChooser(wallpaperIntent, "Set As"))
+    binding.setWallpaperbtn.apply {
+
+      revertAnimation()
+      this.setBackgroundResource(R.drawable.buttoncornerradius)
+    }
+
   }
 
   private fun getImageUri(bitmap: Bitmap): android.net.Uri {

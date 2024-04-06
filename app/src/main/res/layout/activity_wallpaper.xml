@@ -40,12 +40,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:orientation="horizontal">
 
-            <com.google.android.material.button.MaterialButton
+            <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
                 android:id="@+id/setWallpaperbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
                 android:layout_weight="8"
+                app:spinning_bar_width="4dp"
+            app:spinning_bar_color="#FFF"
+            app:spinning_bar_padding="6dp"
+                android:background="@drawable/buttoncornerradius"
                 android:text="Set As Wallpaper" />
 
             <ImageView
