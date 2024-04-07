@@ -109,6 +109,7 @@
                     </LinearLayout>
 
                     <com.google.android.gms.ads.AdView
+                        android:layout_marginTop="3dp"
                         android:id="@+id/homescreen_adview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
