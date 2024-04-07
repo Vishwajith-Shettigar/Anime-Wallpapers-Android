@@ -123,9 +123,7 @@ class WallpaperActivity : AppCompatActivity() {
           // Display the loaded bitmap in the ImageView
           binding.image.setImageBitmap(resource)
         }
-
         override fun onLoadCleared(placeholder: android.graphics.drawable.Drawable?) {
-
         }
       })
 
