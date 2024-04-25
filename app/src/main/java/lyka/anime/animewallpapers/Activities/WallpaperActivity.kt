@@ -116,7 +116,7 @@ class WallpaperActivity : AppCompatActivity() {
           binding.setWallpaperbtn.setOnClickListener {
             (it as CircularProgressButton).startAnimation()
             CoroutineScope(Dispatchers.Main).launch {
-              delay(1000) // Delay for 1 second
+//              delay(1000) // Delay for 1 second
               setWallpaperUsingIntent(resource)
             }
           }
@@ -164,15 +164,19 @@ class WallpaperActivity : AppCompatActivity() {
     val contentUri = getImageUri(bitmap)
     val wallpaperIntent = Intent(Intent.ACTION_ATTACH_DATA)
     wallpaperIntent.addCategory(Intent.CATEGORY_DEFAULT)
-    wallpaperIntent.setDataAndType(contentUri, "image/png")
-    wallpaperIntent.putExtra("mimeType", "image/png")
+    wallpaperIntent.setDataAndType(contentUri, "image/*")
+    wallpaperIntent.putExtra("mimeType", "image/*")
     wallpaperIntent.putExtra(Intent.EXTRA_STREAM, contentUri)
-    wallpaperIntent.putExtra("finishActivityOnSaveCompleted", true)
+    wallpaperIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     startActivity(Intent.createChooser(wallpaperIntent, "Set As"))
-    binding.setWallpaperbtn.apply {
 
-      revertAnimation()
-      this.setBackgroundResource(R.drawable.buttoncornerradius)
+    binding.setWallpaperbtn.apply {
+      CoroutineScope(Dispatchers.Main).launch {
+        delay(1000)
+        revertAnimation()
+        this@apply.setBackgroundResource(R.drawable.buttoncornerradius)
+      }
+
     }
 
   }
