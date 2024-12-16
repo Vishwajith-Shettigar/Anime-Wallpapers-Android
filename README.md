@@ -10,14 +10,8 @@ This repository contains an Android wallpaper app that lets users browse, select
 
 ## Technologies Used
 
-- **Kotlin**: A modern, concise, and safe programming language for Android development.
-- **Firebase**: Used for backend services such as cloud storage.
-- **Dagger 2**: A powerful dependency injection library that helps manage app components.
-- **RoomDB**: Local database storage for managing and caching wallpaper data.
-- **Jetpack Components**: Utilized for efficient app architecture, including:
-  - **LiveData**: For reactive data handling.
-  - **ViewModel**: To manage UI-related data in a lifecycle-conscious way.
-- **MVVM Architecture**: Implemented to separate concerns and enhance maintainability.
+🤖 Android | 🔥 Firebase| 🧙‍♂️ Kotlin | Dagger 2 | Jetpack components
+
 
 # Screenshots
 
